@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="name" placeholder="name">
+    <input id="text" placeholder="text">
+    <button>save</button>
+    <script>
+        const name = document.getElementById("name")
+        const text = document.getElementById("text")
+        setInterval(()=>{
+            fetch("http://localhost:3000/load/"+name.value || " ")
+            .then(res => res.json())
+            .then(res => {
+                console.log(res)
+                text.value = res.text
+            })
+        },300)
+    </script>
+</body>
+</html>
